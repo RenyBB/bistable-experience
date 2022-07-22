@@ -7,7 +7,9 @@
     <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-html-button-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-audio-button-response"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-video-button-response"></script>
     <script src="plugin-audio-keyboard-response.js"></script>
+    <script src="plugin-video-keyboard-response.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/jspsych/css/jspsych.css">
   </head>
   <body></body>
@@ -120,7 +122,20 @@
     const predominant_experience = {};
     
     
-    jsPsych.run([preload, instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, instructions2, Stim_Prompt, audio_bistable])
+     const video_trial = {
+      type: jsPsychVideoKeyboardResponse,
+      stimulus: [stim_path + "Spinning_Dancer.webm"],
+      prompt: 'Press the spacebar if you experience a change in the direction in which the dancer spins.',
+      choices: [' '],
+      max_responses: Infinity,
+      loop: true,
+      controls: false,
+      trial_duration: 30000,
+      show_counter: true
+    }
+    
+    //jsPsych.run([preload, instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, instructions2, Stim_Prompt, audio_bistable])
+    jsPsych.run([preload, instructions, video_trial])
 
 
   </script>
