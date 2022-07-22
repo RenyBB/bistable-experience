@@ -122,7 +122,31 @@
     const predominant_experience = {};
     
     
-     const video_trial = {
+    
+     const clockwise_video = {
+      type: jsPsychVideoButtonResponse,
+      stimulus: [stim_path + "clockwise-spin.mp4"],
+      prompt: 'Clockwise spin',
+      choices: ['Continue'],
+      loop: true,
+      controls: false,
+      trial_duration: 30000,
+      response_ends_trial: true
+    }
+     
+     const counterclockwise_video = {
+      type: jsPsychVideoButtonResponse,
+      stimulus: [stim_path + "counterclockwise-spin.mp4"],
+      prompt: 'Counterclockwise spin',
+      choices: ['Continue'],
+      loop: true,
+      controls: false,
+      trial_duration: 30000,
+      response_ends_trial: true
+    }
+    
+    
+     const bistable_video = {
       type: jsPsychVideoKeyboardResponse,
       stimulus: [stim_path + "bistable-video_Spinning_Dancer.webm"],
       prompt: 'Press the spacebar if you experience a change in the direction in which the dancer spins.',
@@ -135,7 +159,7 @@
     }
     
     //jsPsych.run([preload, instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, instructions2, Stim_Prompt, audio_bistable])
-    jsPsych.run([preload, instructions, video_trial])
+    jsPsych.run([preload, instructions, clockwise_video, counterclockwise_video, bistable_video])
 
 
   </script>
