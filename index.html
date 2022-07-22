@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/@jspsych/plugin-html-button-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-audio-button-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-video-button-response"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.0.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-text"></script>
     <script src="plugin-audio-keyboard-response.js"></script>
     <script src="plugin-video-keyboard-response.js"></script>
@@ -126,11 +126,12 @@
     const predominant_experience_audio = {
             type: jsPsychSurveyMultiChoice,
             questions: [
-              {prompt: [`What was your dominant experience of the tune?`],
-              name: 'switching_perception',
+              {
+              prompt: [`What was your dominant experience of the tune?`],
+              name: 'predominant_experience_audio',
               options: ['An alternating sequence (A-B-A)', 'Two overlapping sequences (A-A-A, B-B-B)', 'I had both experiences in equal proportions']
-        }]         
-};
+              }]         
+  };
     
   const video_instructions = {
             type: jsPsychInstructions,
@@ -196,11 +197,12 @@
   const predominant_experience_video= {
             type: jsPsychSurveyMultiChoice,
             questions: [
-              {prompt: [`What was your dominant experience of the direction in which the dancer was spinning?`],
-              name: 'switching_perception',
+              {
+              prompt: [`What was your dominant experience of the direction in which the dancer was spinning?`],
+              name: 'predominant_experience_video',
               options: ['Clockwise', 'Counterclockwise', 'I had both experiences in equal proportions']
-        }]         
-};
+              }]         
+          };
     
     
  const FreeText_audio = {
