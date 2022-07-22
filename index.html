@@ -53,6 +53,7 @@
       type: jsPsychAudioButtonResponse,
       stimulus: [stim_path + "bistableauditorystimulus_experience1.mp3"],
       choices: ['Continue', 'Repeat'],
+      response_allowed_while_playing: false
     };
     
     var loop_node_audio_experience1 = {
@@ -78,6 +79,7 @@
       type: jsPsychAudioButtonResponse,
       stimulus: [stim_path + "bistableauditorystimulus_experience2.mp3"],
       choices: ['Continue', 'Repeat'],
+      response_allowed_while_playing: false
     };
     
     var loop_node_audio_experience2 = {
@@ -144,7 +146,8 @@
       loop: true,
       controls: true,
       trial_duration: 30000,
-      response_ends_trial: true
+      response_ends_trial: true,
+      response_allowed_while_playing: false
     }
      
      const counterclockwise_video = {
@@ -155,7 +158,8 @@
       loop: true,
       controls: true,
       trial_duration: 30000,
-      response_ends_trial: true
+      response_ends_trial: true,
+      response_allowed_while_playing: false
     }
     
     
