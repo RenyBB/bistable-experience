@@ -29,7 +29,7 @@
       audio: [stim_path + "bistableauditorystimulus.mp3", stim_path + "bistableauditorystimulus_experience1.mp3", stim_path + "bistableauditorystimulus_experience2.mp3"  ] 
     };
 
-    const instructions = {
+    const audio_instructions = {
             type: jsPsychInstructions,
             pages: [
                  `<p>In this task you will listen to a tune.The tune can be perceived in two different ways.</p>
@@ -91,10 +91,10 @@
       }
     };  
 
-     const instructions2 = {
+     const audio_instructions2 = {
             type: jsPsychInstructions,
             pages: [
-                 `<p> You will now listen to the tune, and your taks is to press the spacebar on your keyboar every time you experience a switch in how you perceive the tune.</p>`],
+                 `<p> You will now listen to the tune. Your task is to press the spacebar on your keyboard every time you experience a switch in how you perceive the tune. The tune will last 30 seconds.</p>`],
             show_clickable_nav: true,
             allow_backward: false,
             button_label_next: ['Continue']
@@ -123,13 +123,26 @@
     
     
     
+  const video_instructions = {
+            type: jsPsychInstructions,
+            pages: [
+                 `<p>In this task you watch a video of dancer spinning. The dancer can be experienced in spinning either clockwise or counterclockwise.</p>
+    <p> Your task is to try to switch between the two different experiences.</p>`],
+            show_clickable_nav: true,
+            allow_backward: false,
+            button_label_next: ['Continue']
+            //css_classes: ['instr']
+        }
+
+    
+    
      const clockwise_video = {
       type: jsPsychVideoButtonResponse,
       stimulus: [stim_path + "clockwise-spin.mp4"],
-      prompt: 'Clockwise spin',
+      prompt: 'One way to experience the dancer is spinning clockwise. Replay the video above as many times as you like.',
       choices: ['Continue'],
       loop: true,
-      controls: false,
+      controls: true,
       trial_duration: 30000,
       response_ends_trial: true
     }
@@ -137,15 +150,26 @@
      const counterclockwise_video = {
       type: jsPsychVideoButtonResponse,
       stimulus: [stim_path + "counterclockwise-spin.mp4"],
-      prompt: 'Counterclockwise spin',
+      prompt: 'The other way to experience the dancer is spinning counterclockwise. Replay the video above as many times as you like.',
       choices: ['Continue'],
       loop: true,
-      controls: false,
+      controls: true,
       trial_duration: 30000,
       response_ends_trial: true
     }
     
     
+      const video_instructions2 = {
+            type: jsPsychInstructions,
+            pages: [
+                 `You will now watch the video. Your task is to press the spacebar on your keyboard every time you experience a switch in the direction in which the dancer is spinning. The video will last 30 seconds.</p>`],
+            show_clickable_nav: true,
+            allow_backward: false,
+            button_label_next: ['Continue']
+            //css_classes: ['instr']
+        }
+
+      
      const bistable_video = {
       type: jsPsychVideoKeyboardResponse,
       stimulus: [stim_path + "bistable-video_Spinning_Dancer.webm"],
@@ -158,8 +182,8 @@
       show_counter: true
     }
     
-    //jsPsych.run([preload, instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, instructions2, Stim_Prompt, audio_bistable])
-    jsPsych.run([preload, instructions, clockwise_video, counterclockwise_video, bistable_video])
+    //jsPsych.run([preload, audio_instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable])
+    jsPsych.run([preload, video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video])
 
 
   </script>
