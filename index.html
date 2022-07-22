@@ -187,11 +187,10 @@
     }
      
     
-    var bistable_audio_timeline = [audio_instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable];
-    var bistable_video_timeline = [video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video];
+    //var bistable_audio_timeline = [audio_instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable];
+    //var bistable_video_timeline = [video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video];
     
-    //jsPsych.run([preload, audio_instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable])
-    jsPsych.run([preload, bistable_audio_timeline, bistable_video_timeline])
+    jsPsych.run([preload, audio_instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable, video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video])
 
 
   </script>
