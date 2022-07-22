@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/@jspsych/plugin-html-button-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-audio-button-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-video-button-response"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice"></script>
     <script src="plugin-audio-keyboard-response.js"></script>
     <script src="plugin-video-keyboard-response.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/jspsych/css/jspsych.css">
@@ -120,10 +121,15 @@
       trial_ends_after_audio: true,
       show_counter: true
     };
-
-    const predominant_experience = {};
     
-    
+    const predominant_experience_audio = {
+            type: jsPsychSurveyMultiChoice,
+            questions: [
+              {prompt: [`What was your dominant experience of the tune?`],
+              name: 'switching_perception',
+              options: ['An alternating sequence (A-B-A)', 'Two overlapping sequences (A-A-A, B-B-B)', 'I had both experiences in equal proportions']
+        }]         
+};
     
   const video_instructions = {
             type: jsPsychInstructions,
@@ -185,12 +191,19 @@
       trial_duration: 30000,
       show_counter: true
     }
-     
+     const predominant_experience_video= {
+            type: jsPsychSurveyMultiChoice,
+            questions: [
+              {prompt: [`What was your dominant experience of the direction in which the dancer was spinning?`],
+              name: 'switching_perception',
+              options: ['Clockwise', 'Counterclockwise', 'I had both experiences in equal proportions']
+        }]         
+};
     
     //var bistable_audio_timeline = [audio_instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable];
     //var bistable_video_timeline = [video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video];
     
-    jsPsych.run([preload, audio_instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable, video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video])
+    jsPsych.run([preload, audio_instructions, audio_experience1_prompt, loop_node_audio_experience1, audio_experience2_prompt, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable, predominant_experience_audio, video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video, predominant_experience_video])
 
 
   </script>
