@@ -7,7 +7,11 @@
     <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-html-button-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-audio-button-response"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-video-button-response"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.0.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-text"></script>
     <script src="plugin-audio-keyboard-response.js"></script>
+    <script src="plugin-video-keyboard-response.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/jspsych/css/jspsych.css">
   </head>
   <body></body>
@@ -27,11 +31,11 @@
       audio: [stim_path + "bistableauditorystimulus.mp3", stim_path + "bistableauditorystimulus_experience1.mp3", stim_path + "bistableauditorystimulus_experience2.mp3"  ] 
     };
 
-    const instructions = {
+    const audio_instructions = {
             type: jsPsychInstructions,
             pages: [
                  `<p>In this task you will listen to a tune.The tune can be perceived in two different ways.</p>
-    <p> Your task is to try to switch between the two different experiences.</p>`],
+    <p> Your task is to try to switch between the two different experiences as often as possible.</p>`],
             show_clickable_nav: true,
             allow_backward: false,
             button_label_next: ['Continue']
@@ -51,6 +55,7 @@
       type: jsPsychAudioButtonResponse,
       stimulus: [stim_path + "bistableauditorystimulus_experience1.mp3"],
       choices: ['Continue', 'Repeat'],
+      response_allowed_while_playing: false
     };
     
     var loop_node_audio_experience1 = {
@@ -67,7 +72,7 @@
     
     const audio_experience2_prompt = {
       type: jsPsychHtmlButtonResponse,
-      stimulus:[`The other way to experience the tune is as two seperate sequences played on top of each other: 'A-A-A' and 'B---B---B'`],
+      stimulus:[`The other way to experience the tune is as two seperate sequences played on top of each other: 'A-A-A' and 'B---B---B'.<br>You will now hear the 'A-A-A' sequence first, followed by the 'B---B---B' sequence.<br>Imagine what it would sound like if the two sequences were played at the same time.`],
       choices: ['Play'],
       post_trial_gap: 500
     };
@@ -76,6 +81,7 @@
       type: jsPsychAudioButtonResponse,
       stimulus: [stim_path + "bistableauditorystimulus_experience2.mp3"],
       choices: ['Continue', 'Repeat'],
+      response_allowed_while_playing: false
     };
     
     var loop_node_audio_experience2 = {
@@ -89,10 +95,10 @@
       }
     };  
 
-     const instructions2 = {
+     const audio_instructions2 = {
             type: jsPsychInstructions,
             pages: [
-                 `<p> You will now listen to the tune, and your taks is to press the spacebar on your keyboar every time you experience a switch in how you perceive the tune.</p>`],
+                 `<p> You will now listen to the tune. Your task is to press the spacebar on your keyboard every time you experience a switch in how you perceive the tune. The tune will last 30 seconds.</p>`],
             show_clickable_nav: true,
             allow_backward: false,
             button_label_next: ['Continue']
@@ -116,11 +122,107 @@
       trial_ends_after_audio: true,
       show_counter: true
     };
+    
+    const predominant_experience_audio = {
+            type: jsPsychSurveyMultiChoice,
+            questions: [
+              {
+              prompt: [`What was your dominant experience of the tune?`],
+              name: 'predominant_experience_audio',
+              options: ['An alternating sequence (A-B-A)', 'Two overlapping sequences (A-A-A, B-B-B)', 'I had both experiences in equal proportions']
+              }]         
+  };
+    
+  const video_instructions = {
+            type: jsPsychInstructions,
+            pages: [
+                 `<p>In this task you watch a video of dancer spinning. The dancer can be experienced in spinning either clockwise or counterclockwise.</p>
+    <p> Your task is to try to switch between the two different experiences as often as possible.</p>`],
+            show_clickable_nav: true,
+            allow_backward: false,
+            button_label_next: ['Continue']
+            //css_classes: ['instr']
+        }
 
-    const predominant_experience = {};
     
     
-    jsPsych.run([preload, instructions, audio_experience1_prompt, loop_node_audio_experience1, audio_experience2_prompt, loop_node_audio_experience2, instructions2, Stim_Prompt, audio_bistable])
+     const clockwise_video = {
+      type: jsPsychVideoButtonResponse,
+      stimulus: [stim_path + "clockwise-spin.mp4"],
+      prompt: 'One way to experience the dancer is spinning clockwise. Replay the video above as many times as you like.',
+      choices: ['Continue'],
+      loop: true,
+      controls: true,
+      trial_duration: 30000,
+      response_ends_trial: true,
+      response_allowed_while_playing: false
+    }
+     
+     const counterclockwise_video = {
+      type: jsPsychVideoButtonResponse,
+      stimulus: [stim_path + "counterclockwise-spin.mp4"],
+      prompt: 'The other way to experience the dancer is spinning counterclockwise. Replay the video above as many times as you like.',
+      choices: ['Continue'],
+      loop: true,
+      controls: true,
+      trial_duration: 30000,
+      response_ends_trial: true,
+      response_allowed_while_playing: false
+    }
+    
+    
+      const video_instructions2 = {
+            type: jsPsychInstructions,
+            pages: [
+                 `You will now watch the video. Your task is to press the spacebar on your keyboard every time you experience a switch in the direction in which the dancer is spinning. The video will last 30 seconds.</p>`],
+            show_clickable_nav: true,
+            allow_backward: false,
+            button_label_next: ['Continue']
+            //css_classes: ['instr']
+        }
+
+      
+     const bistable_video = {
+      type: jsPsychVideoKeyboardResponse,
+      stimulus: [stim_path + "bistable-video_Spinning_Dancer.webm"],
+      prompt: 'Press the spacebar if you experience a change in the direction in which the dancer spins.',
+      choices: [' '],
+      max_responses: Infinity,
+      loop: true,
+      controls: false,
+      trial_duration: 30000,
+      show_counter: true
+    };
+    
+  const predominant_experience_video= {
+            type: jsPsychSurveyMultiChoice,
+            questions: [
+              {
+              prompt: [`What was your dominant experience of the direction in which the dancer was spinning?`],
+              name: 'predominant_experience_video',
+              options: ['Clockwise', 'Counterclockwise', 'I had both experiences in equal proportions']
+              }]         
+          };
+    
+    
+ const FreeText_audio = {
+  type: jsPsychSurveyText,
+  questions: [
+    {prompt: 'Please tell us briefly about your experience and what strategies you used to switch between the two experiences.'}
+  ],
+}
+    
+    const FreeText_video = {
+  type: jsPsychSurveyText,
+  questions: [
+    {prompt: 'Please tell us briefly about your experience and what strategies you used to switch between the two experiences.'}
+  ],
+}
+    
+    //var bistable_audio_timeline = [audio_instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable];
+    //var bistable_video_timeline = [video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video];
+    
+    jsPsych.run([preload, audio_instructions, audio_experience1_prompt, loop_node_audio_experience1, audio_experience2_prompt, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable, predominant_experience_audio, FreeText_audio, video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video, predominant_experience_video, FreeText_video])
 
 
   </script>
