@@ -35,7 +35,7 @@
             type: jsPsychInstructions,
             pages: [
                  `<p>In this task you will listen to a tune.The tune can be perceived in two different ways.</p>
-    <p> Your task is to try to switch between the two different experiences.</p>`],
+    <p> Your task is to try to switch between the two different experiences as often as possible.</p>`],
             show_clickable_nav: true,
             allow_backward: false,
             button_label_next: ['Continue']
@@ -72,7 +72,7 @@
     
     const audio_experience2_prompt = {
       type: jsPsychHtmlButtonResponse,
-      stimulus:[`The other way to experience the tune is as two seperate sequences played on top of each other: 'A-A-A' and 'B---B---B'`],
+      stimulus:[`The other way to experience the tune is as two seperate sequences played on top of each other: 'A-A-A' and 'B---B---B'.<br>You will now hear the 'A-A-A' sequence first, followed by the 'B---B---B' sequence.<br>Imagine what it would sound like if the two sequences were played at the same time.`],
       choices: ['Play'],
       post_trial_gap: 500
     };
@@ -137,7 +137,7 @@
             type: jsPsychInstructions,
             pages: [
                  `<p>In this task you watch a video of dancer spinning. The dancer can be experienced in spinning either clockwise or counterclockwise.</p>
-    <p> Your task is to try to switch between the two different experiences.</p>`],
+    <p> Your task is to try to switch between the two different experiences as often as possible.</p>`],
             show_clickable_nav: true,
             allow_backward: false,
             button_label_next: ['Continue']
