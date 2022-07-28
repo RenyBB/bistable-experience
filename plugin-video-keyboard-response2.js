@@ -1,4 +1,4 @@
-var jsPsychVideoKeyboardResponse = (function (jspsych) {
+var jsPsychVideoKeyboardResponse2 = (function (jspsych) {
   "use strict";
 
   const info = {
