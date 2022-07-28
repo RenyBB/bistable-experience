@@ -10,8 +10,8 @@
     <script src="https://unpkg.com/@jspsych/plugin-video-button-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.0.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-text"></script>
-    <script src="plugin-audio-keyboard-response.js"></script>
-    <script src="plugin-video-keyboard-response.js"></script>
+    <script src="plugin-audio-keyboard-response2.js"></script>
+    <script src="plugin-video-keyboard-response2.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/jspsych/css/jspsych.css">
   </head>
   <body></body>
@@ -116,7 +116,7 @@
 
     
     const audio_bistable = {
-      type: jsPsychAudioKeyboardResponse,
+      type: jsPsychAudioKeyboardResponse2,
       stimulus: [stim_path + "bistableauditorystimulus.mp3"],
       prompt: 'Press the spacebar when you experience of the tune changes.',
       choices: [' '],
@@ -185,7 +185,7 @@
 
       
      const bistable_video = {
-      type: jsPsychVideoKeyboardResponse,
+      type: jsPsychVideoKeyboardResponse2,
       stimulus: [stim_path + "bistable-video_Spinning_Dancer.webm"],
       prompt: 'Press the spacebar if you experience a change in the direction in which the dancer spins.',
       choices: [' '],
