@@ -10,11 +10,25 @@
     <script src="https://unpkg.com/@jspsych/plugin-video-button-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.0.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-text"></script>
+    
+    <script src="https://unpkg.com/@jspsych/plugin-call-function"></script>
+    
     <script src="plugin-audio-keyboard-response2.js"></script>
     <script src="plugin-video-keyboard-response2.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/jspsych/css/jspsych.css">
+    
+    <style>
+      html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+      #jspsych-target { width: 100%; height: 100%;}
+      #srt-score { position: absolute; width: 100%; border-bottom: 1px solid #ddd; background-color: #fafafa; margin:0; text-align: center; display: none;}
+      #srt-score progress { width: 500px; }
+      #srt-score .srt-top { padding: 10px 75px; display: inline-block; font-family: 'Open Sans', 'Arial'; font-size: 16px; color: #333;}
+    </style>
   </head>
-  <body></body>
+  
+  <body>
+   
+  </body>
   <script>
      var jsPsych = initJsPsych({
     use_webaudio: false,
@@ -23,7 +37,13 @@
     }
   });
 
-    
+      var show_timer = {
+    type: 'call-function',
+    func: function(){
+      document.querySelector('#srt-score').style.display = 'block';
+    }
+  }
+
     var stim_path = [];
     
     const preload = {
@@ -224,7 +244,7 @@
     //var bistable_audio_timeline = [audio_instructions, audio_experience1_prompt, audio_experience1, loop_node_audio_experience1, audio_experience2_prompt, audio_experience2, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable];
     //var bistable_video_timeline = [video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video];
     
-    jsPsych.run([preload, audio_instructions, audio_experience1_prompt, loop_node_audio_experience1, audio_experience2_prompt, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, audio_bistable, predominant_experience_audio, FreeText_audio, video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video, predominant_experience_video, FreeText_video])
+    jsPsych.run([preload, audio_instructions, audio_experience1_prompt, loop_node_audio_experience1, audio_experience2_prompt, loop_node_audio_experience2, audio_instructions2, Stim_Prompt, show_timer, audio_bistable, predominant_experience_audio, FreeText_audio, video_instructions, clockwise_video, counterclockwise_video, video_instructions2, bistable_video, predominant_experience_video, FreeText_video])
 
 
   </script>
