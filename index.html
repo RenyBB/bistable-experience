@@ -10,12 +10,14 @@
     <script src="https://unpkg.com/@jspsych/plugin-video-button-response"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.0.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-text"></script>
-    
-    <script src="https://unpkg.com/@jspsych/plugin-call-function"></script>
-    
+   
     <script src="plugin-audio-keyboard-response2.js"></script>
     <script src="plugin-video-keyboard-response2.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/jspsych/css/jspsych.css">
+    
+    <style> 
+    .video {display: block; margin: 0 auto;}
+    </style>
 
   </head>
   
@@ -199,7 +201,8 @@
       loop: true,
       controls: false,
       trial_duration: 30000,
-      show_counter: true
+      show_counter: true,
+      css_classes: ['video']     
     };
     
   const predominant_experience_video= {
